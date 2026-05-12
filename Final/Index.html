@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 6 & 7 Unified</title>
+    <link rel="icon" type="image/x-icon" href="diona glitch face.png">
+
+    <style>
+     
+        body, html { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        
+        .page-content { 
+            display: none;
+            min-height: 100vh; 
+            width: 100%;
+            box-sizing: border-box;
+            padding: 40px;
+        }
+
+    
+        .show-page { 
+            display: block !important; 
+        }
+
+        /* --- LOGIN STYLES --- */
+        #login-page { background-color: #f0f2f5; text-align: center; }
+        .login-box {
+            max-width: 400px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border: 3px solid rgb(217, 217, 217);
+        }
+        .avatar { width: 100px; border-radius: 50%; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; box-sizing: border-box; border: 1px solid #ccc; }
+        .login-btn { background-color: black; color: white; padding: 14px; width: 100%; border: none; font-weight: bold; cursor: pointer; }
+        .login-btn:hover { background-color: #555; }
+
+        /* --- PAGINATION STYLES --- */
+        .pagination { display: flex; gap: 10px; justify-content: center; margin-top: 50px; }
+        .pagination a {
+            text-decoration: none; color: black; padding: 10px 15px;
+            border: 1px solid #ccc; border-radius: 6px; background-color: white; cursor: pointer;
+        }
+        .pagination a.active { background-color: #007bff; color: white; border-color: #007bff; }
+
+        /* --- ACTIVITY 5 (HERO) --- */
+        #page1 { 
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('me.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: white; text-align: center;
+        }
+
+        /* --- ACTIVITY 4 (AUDIO) --- */
+        #page2 { background-image: url('Besties.jpg'); background-size: cover; text-align: center; }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            margin-top: 50px;
+        }
+        .marquee-text {
+            display: inline-block;
+            font-size: 50px;
+            font-weight: bolder;
+            color: rgb(170, 146, 110);
+            -webkit-text-stroke: 0.5px rgb(0, 0, 0);
+            
+            /* This starts the animation */
+            animation: scroll-left 10s linear infinite;
+        }
+
+        /* The logic for the movement */
+        @keyframes scroll-left {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .shadow-link { color: rgb(230, 255, 129); text-shadow: 0px 5px 8px black; text-decoration: none; display: block; margin: 10px; }
+
+        /* --- BUTTON STYLES (Activity 2 & 3) --- */
+
+        .button-card {
+            background: white;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgb(185, 205, 255); 
+            border: 1px solid #eee;
+        }
+        .uber-btn { background-color: black; padding: 10px 20px; color: white; border: none; }
+        .amazon-btn { background-color: rgb(255, 216, 20); border-radius: 20px; border: none; padding: 10px 55px; }
+        .git-btn { background-color: rgb(46, 164, 79); border-radius: 6px; padding: 9px 20px; color: white; border: none; font-weight: bold; }
+        .boot-start-btn { background-color: rgb(121, 82, 179); border-radius: 4px; padding: 10px 20px; border: none; color: white; font-weight: bold; }
+        .boot-dl-btn { background-color: white; color: rgb(108, 117, 125); border: 1px solid rgb(108, 117, 125); border-radius: 4px; padding: 10px 20px; font-weight: bold; }
+        .link-apply-btn { background-color: rgb(10, 102, 194); border-radius: 20px; border: none; padding: 10px 20px; color: white; font-weight: bold; }
+        .link-save-btn { color: rgb(10, 102, 194); background-color: white; border-radius: 20px; border: 0.5px solid rgb(10, 102, 194); padding: 10px 20px; font-weight: bold; }
+
+        /* Page 4 Hover Effects */
+        #page4 {
+            transition: background-color 0.5s ease;
+            background-color: #ffffff;
+        }
+        #page4 .uber-btn:hover { opacity: 0.8; cursor: pointer; }
+        #page4 .amazon-btn:hover { background-color: rgb(242, 197, 15); cursor: pointer; }
+        #page4 .git-btn:hover { box-shadow: 0px 5px 10px rgba(108,117,125,0.6); cursor: pointer; }
+        #page4 .boot-start-btn:hover { background-color: rgb(93, 58, 146); cursor: pointer; }
+        #page4 .boot-dl-btn:hover { background-color: rgb(108, 117, 125); color: white; cursor: pointer; }
+        #page4 .link-apply-btn:hover { background-color: rgb(7, 78, 150); cursor: pointer; }
+        #page4 .link-save-btn:hover { background-color: rgba(10, 102, 194, 0.2); border-width: 1.5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. LOGIN SECTION -->
+    <div id="login-page" class="page-content show-page">
+        <div class="login-box">
+            <img src="formal.png" alt="Avatar" class="avatar">
+
+            <h2 style="margin-bottom: 20px; color: #333; font-family: Arial, Helvetica, sans-serif; font-weight:5000;">Log in to visit My Site!</h2>
+
+            <form onsubmit="handleLogin(event)">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" required>
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" required>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. HERO PAGE (Activity 5) -->
+    <div id="page1" class="page-content">
+        <center style="margin-top: 150px;">
+            <h1 style="font-size: 500%; font-weight: bold;">I am Marky</h1>
+            <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">I am a Graphic Illustrator and Graphic Designer</h3>
+            <br><br>
+            <a href="https://drive.google.com/file/d/1_aVQ7qL9YOMwg5bEB68yfBbt_Tw5hsup/view?usp=sharing" 
+               style="background-color: rgb(187, 187, 187); color: black; padding: 13px 20px; text-decoration: none;" target="_blank">
+               My Portfolio
+            </a>
+            <div class="pagination">
+                <a class="active" onclick="showPage('page1')">1</a>
+                <a onclick="showPage('page2')">2</a>
+                <a onclick="showPage('page3')">3</a>
+                <a onclick="showPage('page4')">4</a>
+            </div>
+        </center>
+    </div>
+
+    <!-- 3. FAVICON/AUDIO PAGE (Activity 4) -->
+    <div id="page2" class="page-content">
+        <div class="marquee-container" style="margin-top: 150px; font-family: 'Times New Roman', Times, serif;">
+            <div class="marquee-text">
+                WELCOME!
+            </div>
+        </div>
+        <center>
+            <p style="color: rgb(243, 139, 255); font-size: 30px; -webkit-text-stroke: 0.5px black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">
+                Like I'm Gonna Lose You (Rewritten)
+            </p>
+            <audio controls><source src="Like.mp4" type="audio/mpeg"></audio>
+            <br><img src="Like.gif" style="width: 100px; height: 80px;">
+            <br>
+            <a class="shadow-link" href="https://www.youtube.com/watch?v=2-MBfn8XjIU" target="_blank">Click for Music Video!</a>
+            <a class="shadow-link" href="https://youtu.be/0oz1oVAHHYU" target="_blank">Click to see me sing!</a>
+            <div class="pagination">
+                <a onclick="showPage('page1')">1</a>
+                <a class="active" onclick="showPage('page2')">2</a>
+                <a onclick="showPage('page3')">3</a>
+                <a onclick="showPage('page4')">4</a>
+            </div>
+        </center>
+    </div>
+
+    <!-- 4. BASIC BUTTONS (Activity 2) -->
+    <div id="page3" class="page-content">
+        <div class="button-card">
+        <center>
+            <h1 style="margin-bottom: 40px;">Basic Button Styling</h1>
+            <button class="uber-btn">Request now</button><br><br>
+            <button class="amazon-btn">Add to Cart</button><br><br>
+            <button class="git-btn">Sign up</button><br><br>
+            <button class="boot-start-btn">Get started</button>
+            <button class="boot-dl-btn">Download</button><br><br>
+            <button class="link-apply-btn">Apply on company website</button>
+            <button class="link-save-btn">Save</button>
+</div>
+            <div class="pagination">
+                <a onclick="showPage('page1')">1</a>
+                <a onclick="showPage('page2')">2</a>
+                <a class="active" onclick="showPage('page3')">3</a>
+                <a onclick="showPage('page4')">4</a>
+            </div>
+        </center>
+    </div>
+
+    <!-- 5. BUTTON VARIATIONS (Activity 3) -->
+    <div id="page4" class="page-content">
+        <div class="button-card">
+        <center>
+            <h1 style="margin-bottom: 40px;">Buttons with Hover Effects</h1>
+            <button class="uber-btn"
+                onmouseover="changeBg('#e5e5e5')"
+                onmouseout="changeBg('#ffffff')">Request now
+            </button><br><br>
+            <button class="amazon-btn"
+                onmouseover="changeBg('#fff9e6')" 
+                onmouseout="changeBg('#ffffff')">Add to Cart</button><br><br>
+            <button class="git-btn"
+                onmouseover="changeBg('#e6ffed')" 
+                onmouseout="changeBg('#ffffff')">Sign up</button><br><br>
+            <button class="boot-start-btn"
+                onmouseover="changeBg('#f3effb')" 
+                onmouseout="changeBg('#ffffff')">Get started</button>
+            <button class="boot-dl-btn"
+                onmouseover="changeBg('#f9f6a5')"
+                onmouseout="changeBg('#ffffff')">Download</button><br><br>
+            <button class="link-apply-btn"
+                onmouseover="changeBg('#f7b4c2')"
+                onmouseout="changeBg('#ffffff')">Apply on company website</button>
+            <button class="link-save-btn"
+                onmouseover="changeBg('#f5d6fe')"
+                onmouseout="changeBg('#ffffff')">Save</button>
+</div>
+            <div class="pagination">
+                <a onclick="showPage('page1')">1</a>
+                <a onclick="showPage('page2')">2</a>
+                <a onclick="showPage('page3')">3</a>
+                <a class="active" onclick="showPage('page4')">4</a>
+            </div>
+        </center>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            showPage('page1'); 
+        }
+
+        function changeBg(color) {
+
+    document.getElementById('page4').style.backgroundColor = color;
+}
+
+        function showPage(pageId) {
+    
+            const allPages = document.querySelectorAll('.page-content');
+            allPages.forEach(page => {
+                page.classList.remove('show-page');
+            });
+
+       
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.add('show-page');
+
+     
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
